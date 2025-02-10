@@ -1,11 +1,8 @@
-"use client";
-
 import { ThreeDCardDemo } from "@/components/card";
 import { Button } from "@/components/ui/button";
 import Atropos from "atropos/react";
-import "atropos/css";
 
-export default function Home() {
+const Hero = () => {
   return (
     <div className="min-h-screen bg-jungleGreen p-8">
       <Atropos className="my-8" shadow={false}>
@@ -26,4 +23,6 @@ export default function Home() {
       <ThreeDCardDemo />
     </div>
   );
-}
+};
+
+export default Hero;

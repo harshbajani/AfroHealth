@@ -62,6 +62,19 @@ body {
   }
 }
 
+.smooth-scroll-container {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Remove or update the parallax-element transition */
+.parallax-element {
+  will-change: transform;
+  /* Remove the transition property to prevent additional animation */
+}
+
 @layer base {
   * {
     @apply border-border;
