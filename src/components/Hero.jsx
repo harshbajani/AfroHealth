@@ -12,7 +12,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className=" bg-jungleGreen w-screen flex items-center justify-center relative remove-scrollbar">
+    <div className="min-h-screen bg-jungleGreen w-screen flex items-center justify-center relative remove-scrollbar">
       {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
