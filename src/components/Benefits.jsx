@@ -1,4 +1,3 @@
-// Benefits.jsx
 import { motion } from "framer-motion";
 import Atropos from "atropos/react";
 import "atropos/css";
@@ -8,17 +7,17 @@ const benefitsData = [
   {
     title: "100% Natural Ingredients",
     description: "Sourced from premium farms for maximum purity and taste.",
-    icon: <FaLeaf size={48} className="text-jungleGreen" />,
+    icon: <FaLeaf size={32} className="text-jungleGreen" />,
   },
   {
     title: "Boosts Immunity",
     description: "Packed with vitamins, minerals, and antioxidants.",
-    icon: <FaShieldAlt size={48} className="text-jungleGreen" />,
+    icon: <FaShieldAlt size={32} className="text-jungleGreen" />,
   },
   {
     title: "Increases Energy",
     description: "Provides a refreshing energy lift without the crash.",
-    icon: <FaBolt size={48} className="text-jungleGreen" />,
+    icon: <FaBolt size={32} className="text-jungleGreen" />,
   },
 ];
 
@@ -38,7 +37,7 @@ const Benefits = () => {
       <motion.div className="absolute inset-0 bg-gradient-to-r from-canary via-white to-canary opacity-30 animate-gradient-x" />
 
       <motion.h2
-        className="relative text-4xl font-bold mb-16 text-jungleGreen"
+        className="relative text-3xl font-bold mb-12 text-jungleGreen"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -47,16 +46,16 @@ const Benefits = () => {
         Why Choose AfroHealth?
       </motion.h2>
 
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-5 z-10">
+      <div className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 z-10">
         {benefitsData.map((benefit, index) => (
           <Atropos activeOffset={40} shadow={false} key={index}>
             <motion.div
-              className="relative bg-white rounded-xl p-8 shadow-2xl backdrop-blur-md border border-gray-200 overflow-hidden cursor-pointer"
+              className="relative bg-white rounded-lg p-6 shadow-lg backdrop-blur-md border border-gray-200 overflow-hidden cursor-pointer h-[220px] flex flex-col items-center justify-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
+                boxShadow: "0 15px 30px -8px rgba(0, 0, 0, 0.1)",
               }}
               transition={{
                 duration: 0.8,
@@ -75,25 +74,30 @@ const Benefits = () => {
                 }}
               />
 
-              <motion.div
-                className="relative flex items-center justify-center mb-5"
-                whileHover={{ scale: 1.1 }}
-              >
-                {benefit.icon}
-              </motion.div>
-              <motion.h3
-                className="relative text-2xl font-semibold text-jungleGreen mb-2 text-center"
-                whileHover={{ color: "#2B6B4D" }} // Darker jungle green
-              >
-                {benefit.title}
-              </motion.h3>
+              <div className="flex flex-col items-center justify-between h-full">
+                <motion.div
+                  className="relative flex items-center justify-center mb-4"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {benefit.icon}
+                </motion.div>
 
-              <motion.p
-                className="relative text-gray-700 text-center"
-                whileHover={{ color: "#1A4532" }}
-              >
-                {benefit.description}
-              </motion.p>
+                <div className="flex-1 flex flex-col items-center justify-center">
+                  <motion.h3
+                    className="relative text-lg font-semibold text-jungleGreen mb-2 text-center"
+                    whileHover={{ color: "#2B6B4D" }}
+                  >
+                    {benefit.title}
+                  </motion.h3>
+
+                  <motion.p
+                    className="relative text-sm text-gray-700 text-center max-w-[200px]"
+                    whileHover={{ color: "#1A4532" }}
+                  >
+                    {benefit.description}
+                  </motion.p>
+                </div>
+              </div>
             </motion.div>
           </Atropos>
         ))}
