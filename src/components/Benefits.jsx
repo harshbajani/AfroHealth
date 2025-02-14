@@ -1,7 +1,28 @@
 import { motion } from "framer-motion";
-import Atropos from "atropos/react";
-import "atropos/css";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, PerspectiveCamera } from "@react-three/drei";
 import { FaLeaf, FaShieldAlt, FaBolt } from "react-icons/fa";
+import { Suspense, useEffect } from "react";
+
+// 3D Model component with scaling and positioning
+function BottleModel() {
+  const { scene } = useGLTF("/bottle.glb");
+
+  // Optimize the scene
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = false;
+        child.receiveShadow = false;
+        // Optimize geometry
+        child.geometry.dispose();
+        child.geometry = child.geometry.clone();
+      }
+    });
+  }, [scene]);
+
+  return <primitive object={scene} position={[0, -1, 0]} scale={0.5} />;
+}
 
 const benefitsData = [
   {
@@ -26,81 +47,73 @@ const Benefits = () => {
     <section
       id="benefits"
       data-bgcolor="canary"
-      className="relative z-30 w-full bg-canary flex flex-col items-center justify-center py-20 overflow-hidden top-96"
-      style={{
-        marginTop: "-50vh",
-        paddingTop: "20vh",
-        clipPath: "polygon(0 15%, 100% 0, 100% 100%, 0% 100%)",
-      }}
+      className="relative z-30 w-full bg-canary min-h-screen flex items-center justify-center py-20 overflow-hidden"
     >
       {/* Animated Gradient Background */}
       <motion.div className="absolute inset-0 bg-gradient-to-r from-canary via-white to-canary opacity-30 animate-gradient-x" />
 
-      <motion.h2
-        className="relative text-3xl font-bold mb-12 text-jungleGreen"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        Why Choose AfroHealth?
-      </motion.h2>
-
-      <div className="relative max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4 z-10">
-        {benefitsData.map((benefit, index) => (
-          <Atropos activeOffset={40} shadow={false} key={index}>
-            <motion.div
-              className="relative bg-white rounded-lg p-6 shadow-lg backdrop-blur-md border border-gray-200 overflow-hidden cursor-pointer h-[220px] flex flex-col items-center justify-center"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 15px 30px -8px rgba(0, 0, 0, 0.1)",
-              }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-                hover: { duration: 0.3 },
-              }}
-              viewport={{ once: true }}
-            >
-              {/* Hover overlay effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-jungleGreen/10 to-canary/10"
-                initial={{ opacity: 0 }}
-                whileHover={{
-                  opacity: 1,
-                  transition: { duration: 0.3 },
-                }}
+      <div className="relative max-w-7xl mx-auto w-full flex flex-col md:flex-row gap-8 px-4 z-10">
+        {/* 3D Model Section */}
+        <div className="w-full md:w-1/2 h-[600px] relative">
+          <Canvas
+            dpr={[1, 2]} // Optimize for different screen densities
+            performance={{ min: 0.5 }} // Add performance optimization
+          >
+            <PerspectiveCamera makeDefault position={[0, 0, 18]} fov={45} />
+            <ambientLight intensity={2} />
+            <directionalLight position={[1, 10, 5]} intensity={1} />
+            <Suspense fallback={null}>
+              <BottleModel />
+              <OrbitControls
+                enableZoom={false} // Disable zoom completely
+                enablePan={false} // Disable panning
+                rotateSpeed={0.5} // Slow down rotation for smoother movement
+                dampingFactor={0.1} // Add damping for smoother stops
+                enableDamping={true} // Enable damping
+                minPolarAngle={Math.PI / 2.5} // Limit vertical rotation
+                maxPolarAngle={Math.PI / 1.5} // Limit vertical rotation
+                autoRotate={true} // Optional: add automatic rotation
+                autoRotateSpeed={1} // Optional: control auto-rotation speed
               />
+            </Suspense>
+          </Canvas>
+        </div>
 
-              <div className="flex flex-col items-center justify-between h-full">
-                <motion.div
-                  className="relative flex items-center justify-center mb-4"
-                  whileHover={{ scale: 1.1 }}
-                >
+        {/* Benefits Section */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center">
+          <motion.h2
+            className="text-4xl font-bold mb-12 text-jungleGreen"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            Why Choose AfroHealth?
+          </motion.h2>
+
+          <div className="space-y-8">
+            {benefitsData.map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="flex items-start gap-6"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="p-3 bg-white rounded-full shadow-md">
                   {benefit.icon}
-                </motion.div>
-
-                <div className="flex-1 flex flex-col items-center justify-center">
-                  <motion.h3
-                    className="relative text-lg font-semibold text-jungleGreen mb-2 text-center"
-                    whileHover={{ color: "#2B6B4D" }}
-                  >
-                    {benefit.title}
-                  </motion.h3>
-
-                  <motion.p
-                    className="relative text-sm text-gray-700 text-center max-w-[200px]"
-                    whileHover={{ color: "#1A4532" }}
-                  >
-                    {benefit.description}
-                  </motion.p>
                 </div>
-              </div>
-            </motion.div>
-          </Atropos>
-        ))}
+                <div>
+                  <h3 className="text-xl font-semibold text-jungleGreen mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-700">{benefit.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -7,32 +7,32 @@ const TestimonialSlider = () => {
 
   const testimonialsData = [
     {
-      name: "Dr. Andrew Huberman",
-      role: "NEUROSCIENTIST, HOST OF THE HUBERMAN LAB PODCAST, AG1 PARTNER",
+      name: "Dr. Kizzmekia Corbett",
+      role: "VIRAL IMMUNOLOGIST, SCIENTIST, AfroHealth ADVOCATE",
       quote:
-        "I've been using AG1 since 2012 because it's the simplest, most straightforward way for me to get my bases of important vitamins, minerals, and probiotics.",
-      image: "/huberman.webp",
+        "Since discovering AfroHealth, I've been able to effortlessly support my immune system with the essential vitamins and minerals I need.",
+      image: "/Kizzmekia.jpg",
     },
     {
-      name: "Allyson Felix",
-      role: "OLYMPIC ATHLETE",
+      name: "Gabrielle Union",
+      role: "ACTRESS & ACTIVIST",
       quote:
-        "AG1 has been instrumental in maintaining my peak performance levels throughout training and competition.",
-      image: "/allyson.webp",
+        "AfroHealth has been a game-changer for my wellness routine, helping me stay energized and focused in my busy life.",
+      image: "/gabrielle.webp",
     },
     {
-      name: "Sir Lewis Hamilton",
-      role: "FORMULA 1 CHAMPION",
+      name: "Usain Bolt",
+      role: "OLYMPIC SPRINTER",
       quote:
-        "AG1 helps me maintain optimal nutrition even with my demanding racing schedule.",
-      image: "/lewis.webp",
+        "With AfroHealth, I can ensure my body gets the right nutrients to keep me at the top of my game, no matter the challenge.",
+      image: "/usain.jpg",
     },
     {
-      name: "Jeremy Jauncey",
-      role: "ENTREPRENEUR",
+      name: "Chadwick Boseman",
+      role: "ACTOR & PHILANTHROPIST",
       quote:
-        "AG1 ensures I get all my essential nutrients while traveling the world.",
-      image: "/jeremy.webp",
+        "AfroHealth provides me with the nutritional support I need to fuel my passion and creativity every day.",
+      image: "/chadwick.jpg",
     },
   ];
 
@@ -63,7 +63,9 @@ const TestimonialSlider = () => {
       <h1 className="text-5xl font-normal mb-16">
         The world's top
         <br />
-        performers drink AG1
+        performers drink{" "}
+        <span className="text-jungleGreen font-bold">Afro</span>
+        <span className="text-canary font-bold">Health</span>
       </h1>
 
       {/* Names with sliding underline */}
@@ -137,12 +139,13 @@ const TestimonialSlider = () => {
               <img
                 src={testimonialsData[activeIndex].image}
                 alt={testimonialsData[activeIndex].name}
-                className="w-full h-96 object-cover rounded-lg"
+                className="w-full h-96 object-cover  rounded-lg"
               />
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

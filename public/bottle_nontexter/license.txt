@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bottle_nontexter
+* source:	https://sketchfab.com/3d-models/bottle-nontexter-5eddde0b141649e786d8b115000e244b
+* author:	daenlee20 (https://sketchfab.com/daenlee20)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bottle_nontexter" (https://sketchfab.com/3d-models/bottle-nontexter-5eddde0b141649e786d8b115000e244b) by daenlee20 (https://sketchfab.com/daenlee20) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
