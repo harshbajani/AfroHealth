@@ -59,7 +59,7 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 mt-96" data-bgcolor="white">
+    <div className="max-w-7xl mx-auto px-4 py-16 " data-bgcolor="white">
       <h1 className="text-5xl font-normal mb-16">
         The world's top
         <br />

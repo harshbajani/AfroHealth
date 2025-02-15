@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useParallax } from "react-scroll-parallax";
 import Atropos from "atropos/react";
 import "atropos/css";
-import AfroHealthPouch from "../../public/ProductImages/Afro-Health-Pouch.png";
 
 const Hero = () => {
   const textParallax = useParallax({ speed: 10 });
@@ -116,7 +115,7 @@ const Hero = () => {
           >
             <img
               data-atropos-offset="5"
-              src={AfroHealthPouch}
+              src="/ProductImages/Afro-Health-Pouch.png"
               alt="Afro Health Pouch"
               className="max-h-full object-contain hover:cursor-grab active:cursor-grabbing"
             />
