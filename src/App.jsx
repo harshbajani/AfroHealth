@@ -8,6 +8,9 @@ import AboutProd from "./components/AboutProd";
 import Video from "./components/video";
 import Products from "./components/Products";
 import ResearchStudies from "./components/ReasearchStudies";
+import Promo from "./components/promo";
+import Faq from "./components/Faq";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <ResearchStudies />
           <Products />
           <TestimonialSlider />
+          <Promo />
+          <Faq />
+          <Footer />
         </div>
       </ParallaxProvider>
     </ErrorBoundary>
