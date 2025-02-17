@@ -3,17 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const ParticleEffect = () => {
-  const particles = Array.from({ length: 40 });
+  const particles = Array.from({ length: 90 });
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {particles.map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full"
-          style={{
-            background: i % 2 === 0 ? "#285236" : "#fde268",
-          }}
+          className="absolute w-1 h-1 bg-white rounded-full"
           initial={{
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
@@ -22,7 +19,7 @@ const ParticleEffect = () => {
           animate={{
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
-            opacity: [0, 0.3, 0],
+            opacity: [0, 0.5, 0],
           }}
           transition={{
             duration: Math.random() * 5 + 3,
