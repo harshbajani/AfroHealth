@@ -117,7 +117,10 @@ const TestimonialCarousel = () => {
   }
 
   return (
-    <div className="relative w-full bg-jungleGreen overflow-hidden">
+    <div
+      className="relative w-full bg-jungleGreen overflow-hidden"
+      data-bgColor="jungleGreen"
+    >
       <ParticleEffect />
       <ImagePreloader images={testimonialsData.map((item) => item.image)} />
 
