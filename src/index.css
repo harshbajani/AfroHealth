@@ -118,6 +118,27 @@ button:focus-visible {
   @apply border-none focus:ring-0 focus:border-none focus:outline-none
 }
 
+.main {
+  position: relative;
+  overflow-x: hidden;
+}
+
+section {
+  position: relative;
+  width: 100%;
+}
+
+.hero-section {
+  position: relative;
+  z-index: 10;
+}
+
+.content-sections {
+  position: relative;
+  z-index: 20;
+  background-color: white; /* or your background color */
+}
+
 canvas {
   filter: drop-shadow(0 0 20px rgba(253, 226, 104, 0.3));
 }
