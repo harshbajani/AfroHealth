@@ -13,6 +13,7 @@ import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
 import Lenis from "@studio-freight/lenis";
+import Benefits2 from "./components/Benefits2";
 
 function App() {
   useEffect(() => {
@@ -51,6 +52,7 @@ function App() {
               <AboutProd />
               <Benefits />
               <Video />
+              <Benefits2 />
               <ResearchStudies />
               <Products />
               <TestimonialSlider />
