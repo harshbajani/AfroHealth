@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // <-- import Link
 
 const useActiveSection = () => {
   const [activeBg, setActiveBg] = useState("jungleGreen");
@@ -23,7 +24,6 @@ const useActiveSection = () => {
 const Header = () => {
   const activeBg = useActiveSection();
 
-  // Mapping rules based on the active section's background.
   const mapping = {
     jungleGreen: {
       logoAfro: "text-canary",
@@ -65,14 +65,21 @@ const Header = () => {
     >
       {/* Logo / Brand Name */}
       <div className="flex items-center ">
-        <a href="/" className="text-2xl font-bold">
+        <Link to="/" className="text-2xl font-bold">
           <span className={colors.logoAfro}>Afro</span>
           <span className={`${colors.logoHealth} ml-1`}>Health</span>
-        </a>
+        </Link>
       </div>
 
       {/* Navigation */}
       <nav className="space-x-8">
+        {/* Example of a Link to the home page */}
+        <Link to="/" className={`transition-colors ${colors.nav}`}>
+          Home
+        </Link>
+        {/* New link to Site2 */}
+
+        {/* If these are just internal section anchors on the Home page, you can keep them as <a> */}
         <a href="#shop" className={`transition-colors ${colors.nav}`}>
           Shop
         </a>
@@ -82,6 +89,9 @@ const Header = () => {
         <a href="#contact" className={`transition-colors ${colors.nav}`}>
           Contact
         </a>
+        <Link to="/site-2" className={`transition-colors ${colors.nav}`}>
+          Site 2
+        </Link>
       </nav>
 
       {/* Actions */}
